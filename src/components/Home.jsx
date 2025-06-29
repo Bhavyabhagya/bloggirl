@@ -12,24 +12,24 @@ const Home = () => {
       _id: 'default1',
       title: 'Travel',
       content: 'Travel the world!!!!!',
-      img_url: 'travel.jpg'
+      img_url: 'travel.jpg',
     },
     {
       _id: 'default2',
       title: 'Art',
       content: 'Art!!!!!!!!!!!!!',
-      img_url: 'art.jpg'
+      img_url: 'art.jpg',
     },
     {
       _id: 'default3',
       title: 'Food',
       content: 'Food is Art!!!!',
-      img_url: 'food.jpg'
+      img_url: 'food.jpg',
     }
   ];
 
   useEffect(() => {
-    axios.get('http://localhost:3000/get')
+    axios.get('http://localhost:3001/get')
       .then((res) => {
         const combinedBlogs = [...defaultBlogs, ...res.data];
         setBlogs(combinedBlogs);
@@ -41,7 +41,7 @@ const Home = () => {
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete("http://localhost:3000/${id}")
+    axios.delete(`http://localhost:3001/${id}`)
       .then(() => {
         alert("Deleted successfully!");
         setBlogs(prev => prev.filter(blog => blog._id !== id));
